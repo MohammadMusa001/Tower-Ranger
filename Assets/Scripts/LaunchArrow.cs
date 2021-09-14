@@ -5,13 +5,13 @@ using UnityEngine;
 public class LaunchArrow : State
 {
     
-    public CreateArrow createArrow;
-    public ChargeArrow chargeArrow;
-    public GameObject arrowToBeLaunched;
-    public GameObject arrowToBeCreated;
-    public Camera fpscam;
-    public Transform arrowSpawn;
-    public float damage;
+    
+    public ChargeArrow chargeArrow       ;
+    public GameObject  arrowToBeLaunched ;
+    public GameObject  arrowToBeCreated  ;
+    public Camera      fpscam            ;
+    public Transform   arrowSpawn        ;
+    public float       damage            ;
     public override State RunCurrentState()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -23,7 +23,7 @@ public class LaunchArrow : State
         }
         else
         {
-            Destroy(arrowToBeLaunched, 5f);
+            //Destroy(arrowToBeLaunched, 5f);
             return this;
         }
     }

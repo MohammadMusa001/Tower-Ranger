@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class FireScript : MonoBehaviour
 {
-    [SerializeField] public float damage, range = 200f;
-    [SerializeField] Camera fpsCam;
-    private float health;
-    [SerializeField] PlayerData playerData;
-    private float fov;
-    [SerializeField] LineRenderer stringLine;
-    [SerializeField] Vector3 stringLineStartPos,bowStartPos;
-    [SerializeField] GameObject bowstring;
-    [SerializeField] Transform arrowSpawn;
-    [SerializeField] StateManager stateManager;
 
-    
-    
-    [SerializeField] private GameObject arrow;
+    [HideInInspector] private float health               ;
+    [HideInInspector] private float fov                  ;
+
+    [SerializeField] Camera         fpsCam               ;
+    [SerializeField] PlayerData     playerData           ;
+    [SerializeField] LineRenderer   stringLine           ;
+    [SerializeField] Vector3        stringLineStartPos   , bowStartPos  ;
+    [SerializeField] GameObject     bowstring            ;
+    [SerializeField] Transform      arrowSpawn           ;
+    [SerializeField] StateManager   stateManager         ;
+
+    [SerializeField] public float   damage, range = 200f ;
+    [SerializeField] private float  maxDamage     = 50f  , maxFov = 90f ;
+    [SerializeField] private float  damageRate    = 40f  ;
+    [SerializeField] private float  fovRate       = 5.0f ;
+ 
+    [SerializeField] GameObject     arrow;
 
 
     private void Awake()
@@ -36,16 +40,16 @@ public class FireScript : MonoBehaviour
 
         if(Input.GetButton("Fire1") && stateManager.currentState.name != "Launch Arrow")
         {
-            if (damage <= 50)
+            if (damage <= maxDamage)
             {
-                damage += Time.deltaTime * 50;
+                damage += Time.deltaTime * damageRate;
             }
         }
 
         else
         {
             
-            fpsCam.fieldOfView = Mathf.Lerp(fpsCam.fieldOfView, 90, Time.deltaTime * 5);
+            fpsCam.fieldOfView = Mathf.Lerp(fpsCam.fieldOfView, maxFov, Time.deltaTime * fovRate);
             stringLine.SetPosition(1, new Vector3(stringLineStartPos.x, stringLineStartPos.y, stringLineStartPos.z));
             bowstring.transform.position = bowStartPos;
         }   
