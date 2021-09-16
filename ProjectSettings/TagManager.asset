@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - ArrowSpawn
   - Arrow
+  - Ground
   layers:
   - Default
   - TransparentFX

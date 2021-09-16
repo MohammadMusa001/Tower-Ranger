@@ -30,29 +30,31 @@ public class ChargeArrow : State
     {
         if(Input.GetButtonUp("Fire1"))
         {
-            damage = fireScript.damage;
-            
-            Vector3 force = arrowSpawn.TransformDirection(Vector3.forward * damage);
-            arrowToBeCharged.GetComponent<Rigidbody>().isKinematic = false;
-            arrowToBeCharged.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
-            damage = 1;
+            if(arrowToBeCharged != null)
+            {
+                damage = fireScript.damage;
+                arrowToBeCharged.GetComponent<ArrowScript>().arrowDamage = damage;
+                Vector3 force = arrowSpawn.TransformDirection(Vector3.forward * damage);
+                arrowToBeCharged.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+                StartCoroutine(DeactivateArrow(arrowToBeCharged));
 
-            launchArrow.arrowToBeLaunched = arrowToBeCharged;
+                Debug.Log(damage);
+
+                launchArrow.arrowToBeLaunched = arrowToBeCharged;
+            }
+
             return launchArrow;
-        }
-
-        if(arrowToBeCharged == null)
-        {
-            arrow = Instantiate(arrow) as GameObject;
-            arrowToBeCharged = arrow;
-            return this;
         }
 
         else
         {
             if(Input.GetButton("Fire1") || Input.GetButtonDown("Fire1"))
             {
-                ChargeShot();              
+                if(arrowToBeCharged != null)
+                {
+                    ChargeShot();
+                }
+                             
             }
 
             return this;
@@ -61,10 +63,6 @@ public class ChargeArrow : State
 
     private void ChargeShot()
     {
-
-
-
-
         if (fpsCam.fieldOfView >= minFov)
         {
             fpsCam.fieldOfView -= Time.deltaTime * fovRate;
@@ -86,5 +84,11 @@ public class ChargeArrow : State
         {
             bowNString.transform.Translate(Vector3.left * Time.deltaTime * bowAndArrowRate);
         }
+    }
+
+    IEnumerator DeactivateArrow(GameObject arrowToBeDeactivated)
+    {
+        yield return new WaitForSeconds(2f);
+        arrowToBeDeactivated.SetActive(false);
     }
 }

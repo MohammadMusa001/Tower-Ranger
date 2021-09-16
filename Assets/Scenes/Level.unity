@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 107662778}
   m_Layer: 0
   m_Name: Wall1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -471,7 +471,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24514
+  m_Name: pb_Mesh16614
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1036,9 +1036,9 @@ GameObject:
   - component: {fileID: 495293657}
   - component: {fileID: 495293656}
   - component: {fileID: 495293655}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1051,7 +1051,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495293654}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2240,7 +2240,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24336
+  m_Name: pb_Mesh16436
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6940,7 +6940,7 @@ GameObject:
   - component: {fileID: 1787886172}
   m_Layer: 0
   m_Name: Wall2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7885,6 +7885,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 507588f092bbae94b90e4211c1c86d63, type: 3}
+--- !u!1 &2136687028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8950447113362765293, guid: 507588f092bbae94b90e4211c1c86d63, type: 3}
+  m_PrefabInstance: {fileID: 2136687027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2136687029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136687028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b45396013355c8458f42f421b04f6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToPool: {fileID: 4057468424575603414, guid: c68908d7bf57d6c4db5fc615bbcedf67, type: 3}
+  amountToPool: 20
+  pooledObjects: []
 --- !u!1 &50754955644889551
 GameObject:
   m_ObjectHideFlags: 0

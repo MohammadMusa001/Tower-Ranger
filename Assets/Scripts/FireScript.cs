@@ -21,6 +21,7 @@ public class FireScript : MonoBehaviour
     [SerializeField] private float  damageRate    = 40f  ;
     [SerializeField] private float  fovRate       = 5.0f ;
  
+
     [SerializeField] GameObject     arrow;
 
 
@@ -38,7 +39,7 @@ public class FireScript : MonoBehaviour
             damage = 0;
         }
 
-        if(Input.GetButton("Fire1") && stateManager.currentState.name != "Launch Arrow")
+        if(Input.GetButton("Fire1"))
         {
             if (damage <= maxDamage)
             {
@@ -52,6 +53,7 @@ public class FireScript : MonoBehaviour
             fpsCam.fieldOfView = Mathf.Lerp(fpsCam.fieldOfView, maxFov, Time.deltaTime * fovRate);
             stringLine.SetPosition(1, new Vector3(stringLineStartPos.x, stringLineStartPos.y, stringLineStartPos.z));
             bowstring.transform.position = bowStartPos;
+            
         }   
     }
 
