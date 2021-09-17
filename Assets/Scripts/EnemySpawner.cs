@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemy;
-    [SerializeField] float time = 3f;
+    [SerializeField] float time = 5f;
     [SerializeField] private Vector3 spawnPos;
 
 
@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     }
     IEnumerator SpawnEnemies()
     {
-        spawnPos = new Vector3(Random.Range(-48, 48), 1.87f, 47);
+        spawnPos = new Vector3(Random.Range(-30, 30), -10, 104);
         Instantiate(enemy[Random.Range(0, enemy.Length)], spawnPos, Quaternion.identity);
         yield return new WaitForSeconds(time);
         StartCoroutine(SpawnEnemies());
