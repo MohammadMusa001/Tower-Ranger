@@ -16,7 +16,7 @@ public class FireScript : MonoBehaviour
     [SerializeField] Transform      arrowSpawn           ;
     [SerializeField] StateManager   stateManager         ;
 
-    [SerializeField] public float   damage, range = 200f ;
+    [SerializeField] public  float  damage, range = 200f ;
     [SerializeField] private float  maxDamage     = 50f  , maxFov = 90f ;
     [SerializeField] private float  damageRate    = 40f  ;
     [SerializeField] private float  fovRate       = 5.0f ;

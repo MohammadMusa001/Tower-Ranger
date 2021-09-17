@@ -37,9 +37,6 @@ public class ChargeArrow : State
                 Vector3 force = arrowSpawn.TransformDirection(Vector3.forward * damage);
                 arrowToBeCharged.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
                 StartCoroutine(DeactivateArrow(arrowToBeCharged));
-
-                Debug.Log(damage);
-
                 launchArrow.arrowToBeLaunched = arrowToBeCharged;
             }
 
