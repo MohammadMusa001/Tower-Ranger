@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchArrow: {fileID: 6072169531923242239}
-  createArrow: {fileID: 0}
   arrowToBeCharged: {fileID: 4057468424575603414, guid: c68908d7bf57d6c4db5fc615bbcedf67, type: 3}
   damage: 0
   fpsCam: {fileID: 1346940952611692900}
@@ -115,6 +114,13 @@ MonoBehaviour:
   arrowSpawn: {fileID: 7754218120688113238}
   fireScript: {fileID: 8315939609072558930}
   stringLineStartPos: {x: 0, y: 0, z: 0}
+  arrow: {fileID: 0}
+  fovRate: 40
+  bowAndArrowRate: 2
+  minFov: 65
+  stringLineMinPos: -0.4
+  arrowSpawnMinPos: 2.1
+  bowAndStringMinPos: -1.5
 --- !u!1 &4529452686318858613
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +197,7 @@ Camera:
   m_GameObject: {fileID: 4994393969354708588}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.6509804, g: 0.77647066, b: 0.90196085, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -290,7 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2deab53091784479b17e193cf5a15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createArrow: {fileID: 0}
   chargeArrow: {fileID: 6655050156068776014}
   arrowToBeLaunched: {fileID: 0}
   arrowToBeCreated: {fileID: 4057468424575603414, guid: c68908d7bf57d6c4db5fc615bbcedf67, type: 3}
@@ -421,8 +426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57fa3f7395a71b2409b0d8aefa9c4a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  range: 100
   fpsCam: {fileID: 1346940952611692900}
   playerData: {fileID: 11400000, guid: 2d7cd0cc94c7f7e4e9e837a740e92e0f, type: 2}
   stringLine: {fileID: 7381717735290814823}
@@ -431,6 +434,12 @@ MonoBehaviour:
   bowstring: {fileID: 4529452686318858613}
   arrowSpawn: {fileID: 7754218120688113238}
   stateManager: {fileID: 9025836377418590563}
+  damage: 10
+  range: 100
+  maxDamage: 50
+  maxFov: 90
+  damageRate: 40
+  fovRate: 5
   arrow: {fileID: 4057468424575603414, guid: c68908d7bf57d6c4db5fc615bbcedf67, type: 3}
 --- !u!1 &8315939609190147999
 GameObject:

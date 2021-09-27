@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] public float health, speed, damage, attackRange, attackRate;
     [SerializeField] EnemyData data;
     public bool canAttack = false ;
+    private ObjectPooler objectPooler;
     
 
     private void Awake()
@@ -17,12 +18,17 @@ public class EnemyController : MonoBehaviour
         attackRange = data.attackRange;
         attackRate = data.attackRate;
     }
+
+    private void Start()
+    {
+        objectPooler = FindObjectOfType<ObjectPooler>();
+    }
     public void TakeDamage (float amount)
     {
         health -= amount;
         if(health <= 0)
         {
-            Die();
+            objectPooler.ReturnObjectToThePool(this.gameObject);
         }
     }
 
@@ -54,8 +60,6 @@ public class EnemyController : MonoBehaviour
                 Debug.Log("Player hit");
                 StartCoroutine(Attack());
             }
-
-
         }
 
         yield return new WaitForSeconds(attackRate);

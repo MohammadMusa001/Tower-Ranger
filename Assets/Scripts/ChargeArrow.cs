@@ -14,6 +14,7 @@ public class ChargeArrow : State
     public FireScript   fireScript         ;
     public Vector3      stringLineStartPos ;
     public GameObject   arrow              ;
+    private ObjectPooler objectPooler;
 
 
     [SerializeField] private float fovRate  = 40   , bowAndArrowRate    =  2.0f ;
@@ -23,8 +24,12 @@ public class ChargeArrow : State
 
     private void Awake()
     {
-        stringLineStartPos = stringLine.GetPosition(1);
-        
+        stringLineStartPos = stringLine.GetPosition(1);    
+    }
+
+    private void Start()
+    {
+        objectPooler = FindObjectOfType<ObjectPooler>();           
     }
     public override State RunCurrentState()
     {
@@ -35,7 +40,9 @@ public class ChargeArrow : State
                 damage = fireScript.damage;
                 arrowToBeCharged.GetComponent<ArrowScript>().arrowDamage = damage;
                 Vector3 force = arrowSpawn.TransformDirection(Vector3.forward * damage);
+                arrowToBeCharged.GetComponent<Rigidbody>().isKinematic = false;
                 arrowToBeCharged.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+
                 StartCoroutine(DeactivateArrow(arrowToBeCharged));
                 launchArrow.arrowToBeLaunched = arrowToBeCharged;
             }
@@ -85,7 +92,7 @@ public class ChargeArrow : State
 
     IEnumerator DeactivateArrow(GameObject arrowToBeDeactivated)
     {
-        yield return new WaitForSeconds(2f);
-        arrowToBeDeactivated.SetActive(false);
+        yield return new WaitForSeconds(2.5f);
+        objectPooler.ReturnObjectToThePool(arrowToBeDeactivated);
     }
 }

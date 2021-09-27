@@ -23,15 +23,13 @@ public class WallScript : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(ApplyDamage(collision.gameObject.GetComponent<EnemyController>().damage));
+            ApplyDamage(collision.gameObject.GetComponent<EnemyController>().damage);
         }
     }
 
-    IEnumerator ApplyDamage(float dmg)
+    void ApplyDamage(float dmg)
     { 
         health -= dmg ;
         Debug.Log("Wall hit for : " + dmg + " Current Health : " + health);
-        yield return new WaitForSeconds(1);
-        StartCoroutine(ApplyDamage(dmg));
     }
 }

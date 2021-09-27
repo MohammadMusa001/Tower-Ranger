@@ -10,15 +10,21 @@ public class LaunchArrow : State
     public Camera      fpscam            ;
     public Transform   arrowSpawn        ;
     public float       damage            ;
+    private ObjectPooler objectPooler;
+
+    private void Start()
+    {
+        objectPooler = FindObjectOfType<ObjectPooler>();
+    }
     public override State RunCurrentState()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            arrowToBeCreated = ObjectPool.SharedInstance.GetPooledObject();
+            arrowToBeCreated = objectPooler.GetObjectToBePooled(arrowToBeCreated);
             if(arrowToBeCreated !=null)
             {
                 arrowToBeCreated.SetActive(true);
-                arrowToBeCreated.GetComponent<Rigidbody>().isKinematic = false;
+                arrowToBeCreated.GetComponent<Rigidbody>().isKinematic = true;
                 chargeArrow.arrowToBeCharged = arrowToBeCreated;    
             }
             return chargeArrow;
