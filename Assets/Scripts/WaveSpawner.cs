@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [System.Serializable]
 public class WaveAction
@@ -27,7 +28,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float  xSpawnPos, ySpawnPos, zSpawnPos;
 
     private int currentWaveCount = 0;
-    private int maxWaveCount = 2;
+    private int maxWaveCount     = 2;
+
+    private float wallPosZ;
 
     private ObjectPooler objectPooler;
 
@@ -35,6 +38,7 @@ public class WaveSpawner : MonoBehaviour
     {
         objectPooler = FindObjectOfType<ObjectPooler>();
         StartCoroutine(SpawnLoop());
+        wallPosZ = GameObject.FindGameObjectWithTag("Wall").transform.position.z;
     }
 
     IEnumerator SpawnLoop()
@@ -57,7 +61,14 @@ public class WaveSpawner : MonoBehaviour
                         for(int i = 0; i < waveAction.spawnCount;i++)
                         {
                            GameObject _prefab = objectPooler.GetObjectToBePooled(waveAction.prefab);
+                            
                             _prefab.transform.position = new Vector3(Random.Range(-xSpawnPos, xSpawnPos), ySpawnPos, zSpawnPos);
+                            if(GameObject.FindGameObjectWithTag("Wall")!= null)
+                            {
+                                _prefab.GetComponent<NavMeshAgent>().SetDestination(new Vector3(_prefab.transform.position.x,
+                                _prefab.transform.position.y, wallPosZ));
+                            }
+                            
                         }
                         currentWaveCount++;
                     }

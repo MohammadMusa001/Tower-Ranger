@@ -23,8 +23,11 @@ public class LaunchArrow : State
             arrowToBeCreated = objectPooler.GetObjectToBePooled(arrowToBeCreated);
             if(arrowToBeCreated !=null)
             {
+                arrowToBeCreated.GetComponent<TrailRenderer>().enabled = false;
                 arrowToBeCreated.SetActive(true);
+                
                 arrowToBeCreated.GetComponent<Rigidbody>().isKinematic = true;
+                
                 chargeArrow.arrowToBeCharged = arrowToBeCreated;    
             }
             return chargeArrow;

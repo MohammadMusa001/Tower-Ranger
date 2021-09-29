@@ -28,3 +28,23 @@ C# parse time         : 194ms
 candidates check time : 40ms
 console write time    : 0ms
 
+[api-updater (non-obsolete-error-filter)] 9/29/2021 10:45:13 PM : Starting E:/Musa/Unity/Editor/2020.3.4f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 5120.681ms
+moved types parse time: 115ms
+candidates parse time : 22ms
+C# parse time         : 940ms
+candidates check time : 77ms
+console write time    : 12ms
+
+[api-updater (non-obsolete-error-filter)] 9/29/2021 11:17:26 PM : Starting E:/Musa/Unity/Editor/2020.3.4f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 671.2813ms
+moved types parse time: 136ms
+candidates parse time : 221ms
+C# parse time         : 508ms
+candidates check time : 63ms
+console write time    : 9ms
+

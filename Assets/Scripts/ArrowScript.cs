@@ -15,5 +15,6 @@ public class ArrowScript : MonoBehaviour
             collision.gameObject.GetComponent<EnemyController>().TakeDamage(arrowDamage);
             Debug.Log("Enemy hit with :" + arrowDamage);
         }
+        GetComponent<TrailRenderer>().enabled = false;
     }
 }
