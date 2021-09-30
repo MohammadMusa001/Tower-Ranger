@@ -8,7 +8,7 @@ public class WallScript : MonoBehaviour
 
     private void Update()
     {
-        if (health == 0)
+        if (health <= 0)
         {
             Die();
         }
@@ -19,17 +19,18 @@ public class WallScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerStay(Collider other)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            ApplyDamage(collision.gameObject.GetComponent<EnemyController>().damage);
+            ApplyDamage(other.gameObject.GetComponent<EnemyController>().damage);
         }
     }
 
     void ApplyDamage(float dmg)
     { 
-        health -= dmg ;
+        health -= dmg * Time.deltaTime ;
         Debug.Log("Wall hit for : " + dmg + " Current Health : " + health);
     }
 }

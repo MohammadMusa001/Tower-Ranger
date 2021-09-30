@@ -14,12 +14,17 @@ public class ChargeArrow : State
     public FireScript   fireScript         ;
     public Vector3      stringLineStartPos ;
     public GameObject   arrow              ;
-    private ObjectPooler objectPooler;
+
+    private ObjectPooler objectPooler      ;
 
 
-    [SerializeField] private float fovRate  = 40   , bowAndArrowRate    =  2.0f ;
-    [SerializeField] private float minFov   = 65   , stringLineMinPos   = -0.4f , 
-                     arrowSpawnMinPos       = 2.1f , bowAndStringMinPos = -1.5f ;
+    [SerializeField] private float
+        
+                     fovRate             = 40   , bowAndArrowRate    =  2.0f ,
+                     minFov              = 65   , stringLineMinPos   = -0.4f , 
+                     arrowSpawnMinPos    = 2.1f , bowAndStringMinPos = -1.5f ,
+                     arrowDeactivateTime = 3    ;
+                        
 
 
     private void Awake()
@@ -43,6 +48,7 @@ public class ChargeArrow : State
                 arrowToBeCharged.GetComponent<Rigidbody>().isKinematic = false;
                 arrowToBeCharged.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
                 arrowToBeCharged.GetComponent<TrailRenderer>().enabled = true;
+                fireScript.isReloading = false;
 
                 StartCoroutine(DeactivateArrow(arrowToBeCharged));
                 launchArrow.arrowToBeLaunched = arrowToBeCharged;
@@ -53,7 +59,7 @@ public class ChargeArrow : State
 
         else
         {
-            if(Input.GetButton("Fire1") || Input.GetButtonDown("Fire1"))
+            if((Input.GetButton("Fire1") || Input.GetButtonDown("Fire1")))
             {
                 if(arrowToBeCharged != null)
                 {
@@ -68,6 +74,8 @@ public class ChargeArrow : State
 
     private void ChargeShot()
     {
+        fireScript.isReloading = true;
+
         if (fpsCam.fieldOfView >= minFov)
         {
             fpsCam.fieldOfView -= Time.deltaTime * fovRate;
@@ -93,7 +101,7 @@ public class ChargeArrow : State
 
     IEnumerator DeactivateArrow(GameObject arrowToBeDeactivated)
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(arrowDeactivateTime);
         objectPooler.ReturnObjectToThePool(arrowToBeDeactivated);
     }
 }
