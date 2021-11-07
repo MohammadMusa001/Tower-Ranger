@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyNavMesh : MonoBehaviour
-{
-    [SerializeField] 
-    private NavMeshAgent    navMeshAgent   ;
+{   
     private EnemyController enemyController;
     [SerializeField] 
     private EnemyData       data           ;
     private float           attackRange    ;
     private GameObject      player         ;
 
-    
+    private NavMeshAgent navMeshAgent;
+
+
 
     private void Awake()
     {    

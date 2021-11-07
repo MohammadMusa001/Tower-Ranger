@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour, IDamageable
 {
@@ -9,6 +10,8 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public bool canAttack = false ;
     private ObjectPooler objectPooler;
+    private Animator anim;
+    private NavMeshAgent navMeshAgent;
     
 
     private void Awake()
@@ -18,37 +21,29 @@ public class EnemyController : MonoBehaviour, IDamageable
         damage = data.damage;
         attackRange = data.attackRange;
         attackRate = data.attackRate;
+
     }
 
     private void Start()
     {
         objectPooler = FindObjectOfType<ObjectPooler>();
-        //StartCoroutine(Attack());
+        anim = this.GetComponent<Animator>();
+        navMeshAgent = this.GetComponent<NavMeshAgent>();
     }
     public void TakeDamage (float amount)
     {
         health -= amount;
         if(health <= 0)
         {
-            objectPooler.ReturnObjectToThePool(this.gameObject);
+            anim.SetBool("Die", true);
+            navMeshAgent.speed = 0;
+            StartCoroutine(Die());
         }
     }
 
-    /*IEnumerator Attack()
+    IEnumerator Die()
     {
-        
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
-        {
-            Debug.Log("Shots Fired");
-            WallScript wallScript = hit.transform.GetComponent<WallScript>();
-            if (wallScript != null)
-            { 
-                Debug.Log("wall hit");
-                StartCoroutine(Attack());
-            }
-        }
-
-        yield return new WaitForSeconds(attackRate);
-    }*/
+        yield return new WaitForSeconds(3);
+        objectPooler.ReturnObjectToThePool(this.gameObject);
+    }
 }

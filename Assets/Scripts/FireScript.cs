@@ -21,6 +21,7 @@ public class FireScript : MonoBehaviour
     [SerializeField]  public  float  damage, range = 200f ; 
     [SerializeField]  private float  damageRate    = 20f  ;
     [SerializeField]  private float  fovRate       = 5.0f ;
+
     [HideInInspector] private float  maxDamage     = 30f  , maxFov = 90f ;
 
     public bool isReloading;

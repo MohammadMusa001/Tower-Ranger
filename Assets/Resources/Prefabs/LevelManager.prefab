@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8950447113362765283}
-  - component: {fileID: 8950447113362765282}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -31,21 +30,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8950447113362765282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8950447113362765293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8f928fb08eb504982339d1f7b982ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 4666858882879406150, guid: 1d2449f4578c7924c9789e503bdd7324, type: 3}
-  - {fileID: 5462211803840276458, guid: 6d7e4ab3fe49f6a4782d5b7fd201cde7, type: 3}
-  - {fileID: 6502804802976319686, guid: f216dfb808cb5174db0ab17a218fefe8, type: 3}
-  time: 3
-  spawnPos: {x: 0, y: 0, z: 0}

@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class WallScript : MonoBehaviour
 {
-    private float health = 10000f;
+    private float maxHealth = 10000f;
+    private float currentHealth;
+    public HealthBar healthBar;
 
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
     private void Update()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -17,6 +24,7 @@ public class WallScript : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        PauseMenu.isGameOver = true;
     }
 
 
@@ -25,12 +33,14 @@ public class WallScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             ApplyDamage(other.gameObject.GetComponent<EnemyController>().damage);
+            other.GetComponent<Animator>().SetBool("Attack", true);
         }
     }
 
     void ApplyDamage(float dmg)
     { 
-        health -= dmg * Time.deltaTime ;
-        Debug.Log("Wall hit for : " + dmg + " Current Health : " + health);
+        currentHealth -= dmg * Time.deltaTime ;
+        healthBar.SetHealth(currentHealth);
+        Debug.Log("Wall hit for : " + dmg + " Current Health : " + currentHealth);
     }
 }

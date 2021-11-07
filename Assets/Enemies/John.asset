@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: John
   health: 100
-  moveSpeed: 5
+  moveSpeed: 15
   damage: 20
   attackRange: 5
   attackRate: 0.25

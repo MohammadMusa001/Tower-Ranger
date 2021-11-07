@@ -21,7 +21,7 @@ public class ChargeArrow : State
     [SerializeField] private float
         
                      fovRate             = 40   , bowAndArrowRate    =  2.0f ,
-                     minFov              = 65   , stringLineMinPos   = -0.4f , 
+                     minFov              = 50   , stringLineMinPos   = -0.4f , 
                      arrowSpawnMinPos    = 2.1f , bowAndStringMinPos = -1.5f ,
                      arrowDeactivateTime = 3    ;
                         

@@ -122,7 +122,6 @@ MonoBehaviour:
   arrowSpawnMinPos: 2.1
   bowAndStringMinPos: -1.5
   arrowDeactivateTime: 3
-  reloadTime: 0.5
 --- !u!1 &4529452686318858613
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +212,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.3
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -440,10 +439,9 @@ MonoBehaviour:
   launchArrow: {fileID: 6072169531923242239}
   damage: 10
   range: 100
-  maxDamage: 50
-  maxFov: 90
   damageRate: 40
   fovRate: 5
+  isReloading: 0
   arrow: {fileID: 4057468424575603414, guid: c68908d7bf57d6c4db5fc615bbcedf67, type: 3}
 --- !u!1 &8315939609190147999
 GameObject:

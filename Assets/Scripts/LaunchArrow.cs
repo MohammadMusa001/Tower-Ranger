@@ -12,6 +12,7 @@ public class LaunchArrow : State
     public float         damage            ;
     public bool          canShootArrow     ;
     private ObjectPooler objectPooler      ;
+    
     private float reloadTime = 0.5f;
 
     private void Start()
@@ -22,7 +23,7 @@ public class LaunchArrow : State
     }
     public override State RunCurrentState()
     {
-        if (Input.GetButtonDown("Fire1") && canShootArrow)
+        if (Input.GetButtonDown("Fire1") && canShootArrow && !PauseMenu.isGamePaused)
         {
             arrowToBeCreated = objectPooler.GetObjectToBePooled(arrowToBeCreated);
             if(arrowToBeCreated !=null)
